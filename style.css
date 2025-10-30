@@ -1,0 +1,138 @@
+/* Apply a beautiful gradient background and center the card */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #74ABE2, #5563DE);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Add a soft animated gradient overlay for visual interest */
+body::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.08) 0%, transparent 70%),
+              radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  animation: move-bg 12s linear infinite;
+  z-index: 0;
+}
+
+@keyframes move-bg {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(30px, 30px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Profile card styling */
+.card {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: 340px;
+  text-align: center;
+  padding: 35px 25px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #4a90e2, #5563DE, #2ECC71, #E67E22);
+  background-size: 400% 400%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  border-radius: 15px;
+}
+
+.card:hover::before {
+  opacity: 1;
+  animation: gradientMove 4s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+/* Profile image */
+.profile-img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #4a90e2;
+  margin-bottom: 15px;
+  transition: 0.4s ease;
+}
+
+.card:hover .profile-img {
+  border-color: #2ECC71;
+  transform: scale(1.05);
+}
+
+/* Text styling */
+.card h2 {
+  font-size: 22px;
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.card p {
+  color: #666;
+  margin: 0 0 20px;
+  font-size: 15px;
+}
+
+/* Social icons */
+.social-links a {
+  color: #4a90e2;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 22px;
+  transition: 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #2ECC71;
+  transform: scale(1.2);
+}
+
+/* Contact button */
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #4a90e2, #2ECC71);
+  color: #fff;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #2ECC71, #4a90e2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
